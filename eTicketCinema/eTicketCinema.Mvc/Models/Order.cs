@@ -12,7 +12,7 @@ namespace eTicketCinema.Mvc.Models
 
         public string Email { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public ApplicationUser User { get; set; }
 
