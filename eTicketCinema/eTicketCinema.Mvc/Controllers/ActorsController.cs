@@ -18,8 +18,8 @@ namespace eTicketCinema.Mvc.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allActor = await _dbcontext.Actors.ToListAsync();
-            return View();
+            var data = await _dbcontext.Actors.ToListAsync();
+            return View(data);
         }
     }
 }
