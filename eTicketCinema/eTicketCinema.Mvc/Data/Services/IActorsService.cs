@@ -10,8 +10,8 @@ namespace eTicketCinema.Mvc.Data.Services
         public Task<IEnumerable<Actor> >GettAllAsync();
         Task<Actor> GettByIdAsync(int id);
         Task AddAsync(Actor actor);
-        Actor Update(int id, Actor newActor);
-        void Delete(int id);
+        Task<Actor> UpdateAsync(int id, Actor newActor);
+        Task DeleteAsync(int id);
 
     }
 }

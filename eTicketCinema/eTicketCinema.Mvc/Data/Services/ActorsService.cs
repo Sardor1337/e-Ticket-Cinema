@@ -19,9 +19,11 @@ namespace eTicketCinema.Mvc.Data.Services
             await _dbContext.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var result = await _dbContext.Actors.FirstOrDefaultAsync(x => x.Id == id);
+            _dbContext.Remove(result);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Actor>> GettAllAsync()
@@ -32,12 +34,15 @@ namespace eTicketCinema.Mvc.Data.Services
 
         public async Task<Actor> GettByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var result = await _dbContext.Actors.FirstOrDefaultAsync(x => x.Id == id);
+            return result;
         }
 
-        public Actor Update(int id, Actor newActor)
+        public async Task<Actor> UpdateAsync(int id, Actor newActor)
         {
-            throw new System.NotImplementedException();
+            _dbContext.Update(newActor);
+            await _dbContext.SaveChangesAsync();
+            return newActor;
         }
     }
 }

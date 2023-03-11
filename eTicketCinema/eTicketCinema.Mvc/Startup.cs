@@ -1,4 +1,5 @@
 using eTicketCinema.Mvc.Data;
+using eTicketCinema.Mvc.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,9 @@ namespace eTicketCinema.Mvc
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<IActorsService, ActorsService>();
+
             services.AddControllersWithViews();
         }
 
