@@ -1,5 +1,3 @@
-using System;
-
 namespace eTicketCinema.Mvc.Models
 {
     public class ErrorViewModel

@@ -1,10 +1,6 @@
-﻿using eTicketCinema.Mvc.Data;
-using eTicketCinema.Mvc.Data.Services;
+﻿using eTicketCinema.Mvc.Data.Services;
 using eTicketCinema.Mvc.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
 using System.Threading.Tasks;
 
 namespace eTicketCinema.Mvc.Controllers
@@ -20,7 +16,7 @@ namespace eTicketCinema.Mvc.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GettAllAsync();
+            var data = await _service.GetAllAsync();
             return View(data);
         }
 
@@ -32,7 +28,7 @@ namespace eTicketCinema.Mvc.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName", "ProfilePictureURL", "Bio")] Actor actor)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(actor);
             }
@@ -42,8 +38,8 @@ namespace eTicketCinema.Mvc.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var actorDetail = await _service.GettByIdAsync(id);
-            if(actorDetail == null)
+            var actorDetail = await _service.GetByIdAsync(id);
+            if (actorDetail == null)
             {
                 return View("Not Found");
             }
@@ -53,7 +49,7 @@ namespace eTicketCinema.Mvc.Controllers
         // get:/Actor/Edit/
         public async Task<IActionResult> Edit(int id)
         {
-            var actorDetail = await _service.GettByIdAsync(id);
+            var actorDetail = await _service.GetByIdAsync(id);
             if (actorDetail == null)
             {
                 return View("Not Found");
@@ -76,7 +72,7 @@ namespace eTicketCinema.Mvc.Controllers
         // Get:/Actor/Delete
         public async Task<IActionResult> Delete(int id)
         {
-            var actorDetail = await _service.GettByIdAsync(id);
+            var actorDetail = await _service.GetByIdAsync(id);
             if (actorDetail == null)
             {
                 return View("Not Found");
@@ -87,7 +83,7 @@ namespace eTicketCinema.Mvc.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var actorDetail = await _service.GettByIdAsync(id);
+            var actorDetail = await _service.GetByIdAsync(id);
             if (actorDetail == null)
             {
                 return View("Not Found");
