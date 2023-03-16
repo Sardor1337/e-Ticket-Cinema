@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Linq;
 using System.Threading.Tasks;
-using System;
 
 namespace eTicketCinema.Mvc.Data.Base
 {
@@ -33,22 +30,9 @@ namespace eTicketCinema.Mvc.Data.Base
 
         public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
 
-        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
-        {
-            IQueryable<T> query = _context.Set<T>();
-            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
-            return await query.ToListAsync();
-
-        }
 
         public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
 
-        public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includeProperties)
-        {
-            IQueryable<T> query = _context.Set<T>();
-            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
-            return await query.FirstOrDefaultAsync(n => n.Id == id);
-        }
 
         public async Task UpdateAsync(int id, T entity)
         {

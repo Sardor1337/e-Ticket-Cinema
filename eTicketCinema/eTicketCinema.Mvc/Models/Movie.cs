@@ -1,12 +1,13 @@
-﻿using eTicketCinema.Mvc.Data.Enums;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using eTicketCinema.Mvc.Data.Base;
+using eTicketCinema.Mvc.Data.Enums;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eTicketCinema.Mvc.Models
 {
-    public class Movie
+    public class Movie : IEntityBase
     {
         [Key]
         public int Id { get; set; }

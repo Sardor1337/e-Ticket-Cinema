@@ -1,9 +1,9 @@
 ﻿using eTicketCinema.Mvc.Data.Enums;
 using eTicketCinema.Mvc.Models;
 using Microsoft.AspNetCore.Builder;
-using System.Collections.Generic;
-using System;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace eTicketCinema.Mvc.Data

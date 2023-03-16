@@ -1,18 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using eTicketCinema.Mvc.Data.Base;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace eTicketCinema.Mvc.Models
 {
-    public class Producer
+    public class Producer : IEntityBase
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name ="Profile Picture")]
+        [Display(Name = "Profile Picture")]
+        [Required(ErrorMessage = "Profile Picture is required")]
         public string ProfilePictureURL { get; set; }
-        [Display(Name ="Full name")]
+        [Display(Name = "Full Name")]
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Full Name Must be between 3 and 50")]
         public string FullName { get; set; }
-        [Display(Name ="Biography")]
+        [Required(ErrorMessage = "Bio is required")]
+        [Display(Name = "Biography")]
         public string Bio { get; set; }
 
         //Relationships

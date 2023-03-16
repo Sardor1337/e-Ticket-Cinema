@@ -3,7 +3,7 @@ using eTicketCinema.Mvc.Models;
 
 namespace eTicketCinema.Mvc.Data.Services
 {
-    public interface IActorsService : IEntityBaseRepository<Actor>
+    public interface IProducersService : IEntityBaseRepository<Producer>
     {
     }
 }

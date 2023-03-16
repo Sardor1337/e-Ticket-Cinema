@@ -1,11 +1,10 @@
 ﻿using eTicketCinema.Mvc.Data.Base;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace eTicketCinema.Mvc.Models
 {
-    public class Actor: IEntityBase
+    public class Actor : IEntityBase
     {
         [Key]
         public int Id { get; set; }
